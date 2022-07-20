@@ -4,6 +4,8 @@
 # gridbr: IBGE statistical grid access with R
 
 <!-- badges: start -->
+
+[![R-CMD-check](https://github.com/luisfelipebr/gridbr/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/luisfelipebr/gridbr/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
 **The goal of ‘gridbr’ is to provide easy access to [IBGE Statistical

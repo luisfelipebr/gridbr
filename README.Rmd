@@ -16,6 +16,7 @@ knitr::opts_chunk$set(
 # gridbr: IBGE statistical grid access with R
 
 <!-- badges: start -->
+[![R-CMD-check](https://github.com/luisfelipebr/gridbr/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/luisfelipebr/gridbr/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
 **The goal of 'gridbr' is to provide easy access to [IBGE Statistical Grid](https://mapasinterativos.ibge.gov.br/grade/default.html)** (download available [here](https://geoftp.ibge.gov.br/recortes_para_fins_estatisticos/grade_estatistica/censo_2010/)). It builds upon the development made in the project [IBGE Statistical Grid in Compact Representation](https://github.com/osm-codes/BR_IBGE) (short paper available [here](http://mtc-m16c.sid.inpe.br/ibi/8JMKD3MGPDW34P/45U7J5H)).

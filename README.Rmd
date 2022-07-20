@@ -31,7 +31,7 @@ devtools::install_github("luisfelipebr/gridbr")
 
 ## Example
 
-```{r setup}
+```{r setup, message=FALSE}
 library(gridbr)
 library(sf)
 ```
@@ -42,7 +42,13 @@ In the following example, the Brazilian archipelago [Fernando de Noronha](https:
 
 ```{r}
 library(geobr)
-aoi <- read_municipality(2605459)
+```
+
+```{r message=FALSE}
+aoi <- read_municipality(2605459, showProgress = FALSE)
+```
+
+```{r aoi}
 plot(st_geometry(aoi))
 ```
 
@@ -51,7 +57,13 @@ After loading the aoi, you can use the function `gridbr_download` to download th
 ```{r}
 aoi_grid <- gridbr_download(input = aoi, 
                             cellsize = "1KM")
+```
+
+```{r}
 head(aoi_grid)
+```
+
+```{r grid}
 plot(st_geometry(aoi_grid))
 plot(st_geometry(aoi), add = TRUE, border = "red")
 ```
@@ -61,17 +73,23 @@ The IBGE statistical grid was made available in the following sizes: 500KM, 100K
 Retrieving population census data requires either an internet connection or the support package [gridbr.data](https://github.com/luisfelipebr/gridbr.data). If the user does not meet these requirements, the output will include only the cell's id and geometry, but not population census data. If the user meet the requirements and still don't want to download the data, they can specify it by setting the `census_data` parameter to FALSE.
 
 ```{r}
-aoi_grid_1KM_id <- gridbr_download(aoi, 
-                                   cellsize = "1KM", 
-                                   census_data = FALSE)
-head(aoi_grid_1KM_id)
+aoi_grid <- gridbr_download(aoi,
+                            cellsize = "1KM",
+                            census_data = FALSE)
+```
+
+```{r}
+head(aoi_grid)
 ```
 
 The other optional parameter is related to the projection: by default, the output will have the same CRS as the input. If you want to keep the original grid CRS, with an equal area projection, you must set the `equal_area` parameter to TRUE.
 
 ```{r}
-aoi_grid_1KM_id <- gridbr_download(aoi, 
-                                   cellsize = "1KM", 
-                                   equal_area = TRUE)
-head(aoi_grid_1KM_id)
+aoi_grid <- gridbr_download(aoi,
+                            cellsize = "1KM",
+                            equal_area = TRUE)
+```
+
+```{r}
+head(aoi_grid)
 ```

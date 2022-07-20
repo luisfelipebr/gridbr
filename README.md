@@ -31,7 +31,6 @@ devtools::install_github("luisfelipebr/gridbr")
 ``` r
 library(gridbr)
 library(sf)
-#> Linking to GEOS 3.9.1, GDAL 3.4.2, PROJ 8.2.1; sf_use_s2() is TRUE
 ```
 
 **gridbr_download** is the main function available in the package. It
@@ -47,13 +46,17 @@ municipality code.
 
 ``` r
 library(geobr)
-aoi <- read_municipality(2605459)
-#> Using year 2010
-#> Downloading: 10 B     Downloading: 10 B     Downloading: 1.7 kB     Downloading: 1.7 kB     Downloading: 1.7 kB     Downloading: 1.7 kB     Downloading: 1.8 kB     Downloading: 1.8 kB     Downloading: 1.8 kB     Downloading: 1.8 kB     Downloading: 1.9 kB     Downloading: 1.9 kB     Downloading: 2 kB     Downloading: 2 kB     Downloading: 3.4 kB     Downloading: 3.4 kB     Downloading: 5.1 kB     Downloading: 5.1 kB     Downloading: 5.1 kB     Downloading: 5.1 kB     Downloading: 13 kB     Downloading: 13 kB     Downloading: 13 kB     Downloading: 13 kB     Downloading: 13 kB     Downloading: 13 kB     Downloading: 21 kB     Downloading: 21 kB     Downloading: 21 kB     Downloading: 21 kB     Downloading: 21 kB     Downloading: 21 kB     Downloading: 29 kB     Downloading: 29 kB     Downloading: 29 kB     Downloading: 29 kB     Downloading: 29 kB     Downloading: 29 kB     Downloading: 38 kB     Downloading: 38 kB     Downloading: 38 kB     Downloading: 38 kB     Downloading: 38 kB     Downloading: 38 kB     Downloading: 46 kB     Downloading: 46 kB     Downloading: 46 kB     Downloading: 46 kB     Downloading: 46 kB     Downloading: 46 kB     Downloading: 54 kB     Downloading: 54 kB     Downloading: 54 kB     Downloading: 54 kB     Downloading: 54 kB     Downloading: 54 kB     Downloading: 62 kB     Downloading: 62 kB     Downloading: 62 kB     Downloading: 62 kB     Downloading: 62 kB     Downloading: 62 kB     Downloading: 70 kB     Downloading: 70 kB     Downloading: 70 kB     Downloading: 70 kB     Downloading: 70 kB     Downloading: 70 kB     Downloading: 78 kB     Downloading: 78 kB     Downloading: 78 kB     Downloading: 78 kB     Downloading: 78 kB     Downloading: 78 kB     Downloading: 86 kB     Downloading: 86 kB     Downloading: 86 kB     Downloading: 86 kB     Downloading: 86 kB     Downloading: 86 kB     Downloading: 94 kB     Downloading: 94 kB     Downloading: 94 kB     Downloading: 94 kB     Downloading: 94 kB     Downloading: 94 kB     Downloading: 100 kB     Downloading: 100 kB     Downloading: 100 kB     Downloading: 100 kB     Downloading: 100 kB     Downloading: 100 kB     Downloading: 110 kB     Downloading: 110 kB     Downloading: 110 kB     Downloading: 110 kB     Downloading: 110 kB     Downloading: 110 kB     Downloading: 120 kB     Downloading: 120 kB     Downloading: 120 kB     Downloading: 120 kB     Downloading: 120 kB     Downloading: 120 kB     Downloading: 130 kB     Downloading: 130 kB     Downloading: 130 kB     Downloading: 130 kB     Downloading: 130 kB     Downloading: 130 kB     Downloading: 130 kB     Downloading: 130 kB     Downloading: 130 kB     Downloading: 130 kB     Downloading: 130 kB     Downloading: 130 kB     Downloading: 140 kB     Downloading: 140 kB     Downloading: 140 kB     Downloading: 140 kB     Downloading: 140 kB     Downloading: 140 kB     Downloading: 150 kB     Downloading: 150 kB     Downloading: 150 kB     Downloading: 150 kB     Downloading: 150 kB     Downloading: 150 kB     Downloading: 160 kB     Downloading: 160 kB     Downloading: 160 kB     Downloading: 160 kB     Downloading: 160 kB     Downloading: 160 kB     Downloading: 170 kB     Downloading: 170 kB     Downloading: 170 kB     Downloading: 170 kB     Downloading: 170 kB     Downloading: 170 kB     Downloading: 180 kB     Downloading: 180 kB     Downloading: 180 kB     Downloading: 180 kB     Downloading: 180 kB     Downloading: 180 kB     Downloading: 180 kB     Downloading: 180 kB     Downloading: 180 kB     Downloading: 180 kB     Downloading: 180 kB     Downloading: 180 kB     Downloading: 190 kB     Downloading: 190 kB     Downloading: 190 kB     Downloading: 190 kB     Downloading: 190 kB     Downloading: 190 kB     Downloading: 200 kB     Downloading: 200 kB     Downloading: 200 kB     Downloading: 200 kB     Downloading: 200 kB     Downloading: 200 kB     Downloading: 210 kB     Downloading: 210 kB     Downloading: 210 kB     Downloading: 210 kB     Downloading: 210 kB     Downloading: 210 kB     Downloading: 220 kB     Downloading: 220 kB     Downloading: 220 kB     Downloading: 220 kB     Downloading: 220 kB     Downloading: 220 kB     Downloading: 220 kB     Downloading: 220 kB     Downloading: 220 kB     Downloading: 220 kB     Downloading: 220 kB     Downloading: 220 kB     Downloading: 230 kB     Downloading: 230 kB     Downloading: 230 kB     Downloading: 230 kB     Downloading: 230 kB     Downloading: 230 kB     Downloading: 240 kB     Downloading: 240 kB     Downloading: 240 kB     Downloading: 240 kB     Downloading: 240 kB     Downloading: 240 kB     Downloading: 250 kB     Downloading: 250 kB     Downloading: 250 kB     Downloading: 250 kB     Downloading: 250 kB     Downloading: 250 kB     Downloading: 250 kB     Downloading: 250 kB     Downloading: 260 kB     Downloading: 260 kB     Downloading: 260 kB     Downloading: 260 kB     Downloading: 260 kB     Downloading: 260 kB     Downloading: 260 kB     Downloading: 260 kB     Downloading: 260 kB     Downloading: 260 kB
+```
+
+``` r
+aoi <- read_municipality(2605459, showProgress = FALSE)
+```
+
+``` r
 plot(st_geometry(aoi))
 ```
 
-<img src="man/figures/README-unnamed-chunk-2-1.png" width="100%" />
+<img src="man/figures/README-aoi-1.png" width="100%" />
 
 After loading the aoi, you can use the function `gridbr_download` to
 download the grid. Two arguments are mandatory: `input` and `cellsize`.
@@ -61,6 +64,9 @@ download the grid. Two arguments are mandatory: `input` and `cellsize`.
 ``` r
 aoi_grid <- gridbr_download(input = aoi, 
                             cellsize = "1KM")
+```
+
+``` r
 head(aoi_grid)
 #> Simple feature collection with 6 features and 5 fields
 #> Geometry type: POLYGON
@@ -74,11 +80,14 @@ head(aoi_grid)
 #> 4 1KME7376N10819    0   0   0       0 POLYGON ((-32.47914 -3.8638...
 #> 5 1KME7376N10820    0   0   0       0 POLYGON ((-32.47984 -3.8549...
 #> 6 1KME7376N10821    0   0   0       0 POLYGON ((-32.48054 -3.8459...
+```
+
+``` r
 plot(st_geometry(aoi_grid))
 plot(st_geometry(aoi), add = TRUE, border = "red")
 ```
 
-<img src="man/figures/README-unnamed-chunk-3-1.png" width="100%" />
+<img src="man/figures/README-grid-1.png" width="100%" />
 
 The IBGE statistical grid was made available in the following sizes:
 500KM, 100KM, 50KM, 10KM, 5KM, 1KM and 200M. Using a different value
@@ -93,10 +102,13 @@ the requirements and still don’t want to download the data, they can
 specify it by setting the `census_data` parameter to FALSE.
 
 ``` r
-aoi_grid_1KM_id <- gridbr_download(aoi, 
-                                   cellsize = "1KM", 
-                                   census_data = FALSE)
-head(aoi_grid_1KM_id)
+aoi_grid <- gridbr_download(aoi,
+                            cellsize = "1KM",
+                            census_data = FALSE)
+```
+
+``` r
+head(aoi_grid)
 #> Simple feature collection with 6 features and 1 field
 #> Geometry type: POLYGON
 #> Dimension:     XY
@@ -117,10 +129,13 @@ original grid CRS, with an equal area projection, you must set the
 `equal_area` parameter to TRUE.
 
 ``` r
-aoi_grid_1KM_id <- gridbr_download(aoi, 
-                                   cellsize = "1KM", 
-                                   equal_area = TRUE)
-head(aoi_grid_1KM_id)
+aoi_grid <- gridbr_download(aoi,
+                            cellsize = "1KM",
+                            equal_area = TRUE)
+```
+
+``` r
+head(aoi_grid)
 #> Simple feature collection with 6 features and 5 fields
 #> Geometry type: POLYGON
 #> Dimension:     XY

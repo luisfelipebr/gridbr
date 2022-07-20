@@ -1,30 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>/404.html</loc>
+    <loc>http://lucunha.com/gridbr/404.html</loc>
   </url>
   <url>
-    <loc>/LICENSE.html</loc>
+    <loc>http://lucunha.com/gridbr/LICENSE.html</loc>
   </url>
   <url>
-    <loc>/authors.html</loc>
+    <loc>http://lucunha.com/gridbr/authors.html</loc>
   </url>
   <url>
-    <loc>/index.html</loc>
+    <loc>http://lucunha.com/gridbr/index.html</loc>
   </url>
   <url>
-    <loc>/reference/gridbr.html</loc>
+    <loc>http://lucunha.com/gridbr/reference/gridbr.html</loc>
   </url>
   <url>
-    <loc>/reference/gridbr_crs.html</loc>
+    <loc>http://lucunha.com/gridbr/reference/gridbr_crs.html</loc>
   </url>
   <url>
-    <loc>/reference/gridbr_download.html</loc>
+    <loc>http://lucunha.com/gridbr/reference/gridbr_download.html</loc>
   </url>
   <url>
-    <loc>/reference/gridbr_urban.html</loc>
+    <loc>http://lucunha.com/gridbr/reference/gridbr_urban.html</loc>
   </url>
   <url>
-    <loc>/reference/index.html</loc>
+    <loc>http://lucunha.com/gridbr/reference/index.html</loc>
   </url>
 </urlset>

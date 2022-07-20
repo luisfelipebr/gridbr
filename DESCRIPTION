@@ -1,6 +1,6 @@
 Package: gridbr
 Type: Package
-Title: gridbr: IBGE statistical grid access with R
+Title: IBGE statistical grid access with R
 Version: 0.1.0
 Author: Luis Cunha
 Maintainer: Luis Cunha <luisfelipebc@outlook.com>
@@ -14,6 +14,9 @@ Depends:
 Imports: 
     sf
 Suggests: 
-    gridbr.data
+    gridbr.data,
+    knitr,
+    rmarkdown
 RoxygenNote: 7.2.1
 URL: http://lucunha.com/gridbr/
+VignetteBuilder: knitr

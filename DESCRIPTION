@@ -14,9 +14,6 @@ Depends:
 Imports: 
     sf
 Suggests: 
-    gridbr.data,
-    knitr,
-    rmarkdown
+    gridbr.data
 RoxygenNote: 7.2.1
 URL: http://lucunha.com/gridbr/
-VignetteBuilder: knitr

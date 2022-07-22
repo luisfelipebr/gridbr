@@ -4,14 +4,14 @@
 #' @param input object of class sf, sfc or sfg.
 #' @param cellsize target cell size. Must be one of: "500KM", "100KM", "50KM", "10KM", "5KM", "1KM" and "200M".
 #' @param census_data logical. Set to FALSE if you don't want to include population census data.
-#' @param equal_area logical. Set to TRUE if you want to use the original grid CRS with an equal area projection.
+#' @param equal_area logical. Set to TRUE if you want to use the original grid CRS, with an equal area projection.
 #' @return IBGE statistical grid
 #' @export
 
 gridbr_download <- function(input, cellsize, census_data = TRUE, equal_area = FALSE) {
 
   # error: input class
-  if (!any(class(input) %in% c("sf", "sfc"))) stop("input must be of class simple features (sf)")
+  if (!any(class(input) %in% c("sf", "sfc", "sfg"))) stop("input must be of class simple features (sf)")
 
   # message: internet connection
   if (suppressWarnings(tryCatch(
@@ -189,22 +189,13 @@ gridbr_download <- function(input, cellsize, census_data = TRUE, equal_area = FA
     sf::st_geometry(grid) <- "geom"
 
     # recreate IBGE id
-    grid$id <- ifelse(rep(cellsize2, times = nrow(grid)) >= 1000,
-      paste0(
-        cellsize,
+    grid$id <- paste0(
+      cellsize,
         "E",
         as.numeric(substr(formatC((2800000 + (floor((gridc[, 1] - 2800000) / cellsize2) * cellsize2)), width = 7, format = "d", flag = "0"), start = 1, stop = 4)),
         "N",
         as.numeric(substr(formatC((7350000 + (floor((gridc[, 2] - 7350000) / cellsize2) * cellsize2)), width = 8, format = "d", flag = "0"), start = 1, stop = 5))
-      ),
-      paste0(
-        cellsize,
-        "E",
-        as.numeric(substr(formatC((2800000 + (floor((gridc[, 1] - 2800000) / cellsize2) * cellsize2)), width = 7, format = "d", flag = "0"), start = 1, stop = 5)),
-        "N",
-        as.numeric(substr(formatC((7350000 + (ceiling((gridc[, 2] - 7350000) / cellsize2) * cellsize2)), width = 8, format = "d", flag = "0"), start = 1, stop = 6))
       )
-    )
 
     grid <- rbind(grid)
   }

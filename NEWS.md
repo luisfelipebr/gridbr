@@ -1,5 +1,10 @@
 # gridbr 
 
+# gridbr v0.1.2 (2022-07-25)
+
+* Fixed 'gridbr_make' function id
+* Added 'gridbr_make' documentation
+
 # gridbr v0.1.1 (2022-07-22)
 
 * Added 'gridbr_make' function

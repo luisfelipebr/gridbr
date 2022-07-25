@@ -13,7 +13,7 @@ gridbr_download(input, cellsize, census_data = TRUE, equal_area = FALSE)
 
 \item{census_data}{logical. Set to FALSE if you don't want to include population census data.}
 
-\item{equal_area}{logical. Set to TRUE if you want to use the original grid CRS with an equal area projection.}
+\item{equal_area}{logical. Set to TRUE if you want to use the original grid CRS, with an equal area projection.}
 }
 \value{
 IBGE statistical grid

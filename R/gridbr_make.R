@@ -79,9 +79,9 @@ gridbr_make <- function(input, cellsize, equal_area = FALSE) {
       cellsize/1000,
       "KM",
       "E",
-      as.numeric(substr(formatC((2800000 + (floor((gridc[, 1] - 2800000) / cellsize2) * cellsize2)), width = 7, format = "d", flag = "0"), start = 1, stop = 4)),
+      as.numeric(substr(formatC((2800000 + (floor((gridc[, 1] - 2800000) / cellsize) * cellsize)), width = 7, format = "d", flag = "0"), start = 1, stop = 4)),
       "N",
-      as.numeric(substr(formatC((7350000 + (floor((gridc[, 2] - 7350000) / cellsize2) * cellsize2)), width = 8, format = "d", flag = "0"), start = 1, stop = 5))
+      as.numeric(substr(formatC((7350000 + (floor((gridc[, 2] - 7350000) / cellsize) * cellsize)), width = 8, format = "d", flag = "0"), start = 1, stop = 5))
     )
 
   }

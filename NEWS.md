@@ -1,5 +1,9 @@
 # gridbr 
 
+# gridbr v0.1.3 (2022-08-10)
+
+* Updated README and documentation
+
 # gridbr v0.1.2 (2022-07-25)
 
 * Fixed 'gridbr_make' function id

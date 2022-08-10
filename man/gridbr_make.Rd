@@ -2,20 +2,20 @@
 % Please edit documentation in R/gridbr_make.R
 \name{gridbr_make}
 \alias{gridbr_make}
-\title{Make standardized square grid.}
+\title{Make Brazilian statistical grid.}
 \usage{
 gridbr_make(input, cellsize, equal_area = FALSE)
 }
 \arguments{
 \item{input}{object of class sf, sfc or sfg.}
 
-\item{cellsize}{integer, in meters. Target cell size must be greater than 1.}
+\item{cellsize}{integer. Target cell size (in meters). Must be greater than 1.}
 
 \item{equal_area}{logical. Set to TRUE if you want to use the original grid CRS, with an equal area projection.}
 }
 \value{
-standardized square grid
+Brazilian statistical grid
 }
 \description{
-Make standardized square grid covering (\code{input}).
+Make Brazilian statistical grid covering (\code{input}).
 }

@@ -1,19 +1,20 @@
-Package: gridbr
 Type: Package
-Title: IBGE statistical grid access with R
-Version: 0.1.2
+Package: gridbr
+Title: easy access to the Brazilian statistical grid with R
+Version: 0.1.3
 Author: Luis Cunha
 Maintainer: Luis Cunha <luisfelipebc@outlook.com>
-Description: Make IBGE statistical grid and retrieve population census data.
+Description: Make Brazilian statistical grid and access 2010 population
+    census data.
 License: CC0
-Encoding: UTF-8
-LazyData: true
-LazyDataCompression: xz
+URL: http://lucunha.com/gridbr/
 Depends: 
     R (>= 2.10)
 Imports: 
     sf
 Suggests: 
     gridbr.data
+Encoding: UTF-8
+LazyData: true
+LazyDataCompression: xz
 RoxygenNote: 7.2.1
-URL: http://lucunha.com/gridbr/

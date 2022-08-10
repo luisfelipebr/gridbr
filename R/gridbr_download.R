@@ -1,11 +1,11 @@
-#' Download IBGE statistical grid with population census data.
+#' Download Brazilian statistical grid with population census data.
 #'
-#' Make IBGE statistical grid covering (\code{input}) and merge with population census data.
+#' Make Brazilian statistical grid covering (\code{input}) with 2010 population census data.
 #' @param input object of class sf, sfc or sfg.
-#' @param cellsize target cell size. Must be one of: "500KM", "100KM", "50KM", "10KM", "5KM", "1KM" and "200M".
-#' @param census_data logical. Set to FALSE if you don't want to include population census data.
+#' @param cellsize character. Target cell size. Must be one of: "500KM", "100KM", "50KM", "10KM", "5KM", "1KM" and "200M".
+#' @param census_data logical. Set to FALSE if you don't want to include 2010 population census data.
 #' @param equal_area logical. Set to TRUE if you want to use the original grid CRS, with an equal area projection.
-#' @return IBGE statistical grid
+#' @return Brazilian statistical grid
 #' @export
 
 gridbr_download <- function(input, cellsize, census_data = TRUE, equal_area = FALSE) {

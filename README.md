@@ -1,21 +1,19 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# gridbr: IBGE statistical grid access with R
+# gridbr: easy access to the Brazilian statistical grid with R
 
 <!-- badges: start -->
 
 [![R-CMD-check](https://github.com/luisfelipebr/gridbr/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/luisfelipebr/gridbr/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
-**The goal of ‘gridbr’ is to provide easy access to [IBGE Statistical
-Grid](https://mapasinterativos.ibge.gov.br/grade/default.html)**
-(download available
-[here](https://geoftp.ibge.gov.br/recortes_para_fins_estatisticos/grade_estatistica/censo_2010/)).
+**The goal of ‘gridbr’ is to provide easy access to the [Brazilian
+Statistical
+Grid](https://mapasinterativos.ibge.gov.br/grade/default.html)**,
+published by the Brazilian Institute of Geography and Statistics (IBGE).
 It builds upon the development made in the project [IBGE Statistical
-Grid in Compact Representation](https://github.com/osm-codes/BR_IBGE)
-(short paper available
-[here](http://mtc-m16c.sid.inpe.br/ibi/8JMKD3MGPDW34P/45U7J5H)).
+Grid in Compact Representation](https://github.com/osm-codes/BR_IBGE).
 
 ## Installation
 
@@ -26,25 +24,23 @@ repository with `devtools`:
 devtools::install_github("luisfelipebr/gridbr")
 ```
 
-## Example
+## Usage
+
+### Setup
 
 ``` r
 library(gridbr)
-library(sf)
 ```
 
-**gridbr_download** is the main function available in the package. It
-builds the geometry of IBGE statistical grid and merge it with 2010
-population census data. The user must provide the area of interest (aoi)
-as a geospatial [sf](https://r-spatial.github.io/sf/index.html) object.
-
-In the following example, the Brazilian archipelago [Fernando de
+In the following examples, the Brazilian archipelago [Fernando de
 Noronha](https://en.wikipedia.org/wiki/Fernando_de_Noronha) is used as
-aoi. It can be download in one line with the package
-[geobr](https://ipeagit.github.io/geobr/) just by using its IBGE
-municipality code.
+aoi. It can be download with the package
+[geobr](https://ipeagit.github.io/geobr/) by using its municipality
+code.
 
 ``` r
+library(sf)
+#> Linking to GEOS 3.9.1, GDAL 3.4.2, PROJ 8.2.1; sf_use_s2() is TRUE
 library(geobr)
 ```
 
@@ -56,10 +52,17 @@ aoi <- read_municipality(2605459, showProgress = FALSE)
 plot(st_geometry(aoi))
 ```
 
-<img src="man/figures/README-aoi-1.png" width="100%" />
+<img src="man/figures/README-unnamed-chunk-5-1.png" width="100%" />
 
-After loading the aoi, you can use the function `gridbr_download` to
-download the grid. Two arguments are mandatory: `input` and `cellsize`.
+### gridbr_download(input, cellsize)
+
+**`gridbr_download()`** is the main function available in the package.
+It builds the original statistical grid published by IBGE and merge it
+with downloaded 2010 population census data. The user must provide the
+area of interest (aoi) as a geospatial
+[sf](https://r-spatial.github.io/sf/index.html) object.
+
+Two arguments are mandatory: `input` and `cellsize`.
 
 ``` r
 aoi_grid <- gridbr_download(input = aoi, 
@@ -83,26 +86,32 @@ head(aoi_grid)
 ```
 
 ``` r
-plot(st_geometry(aoi_grid))
-plot(st_geometry(aoi), add = TRUE, border = "red")
+plot(st_geometry(aoi))
+plot(st_geometry(aoi_grid), add = TRUE, border = "red")
 ```
 
-<img src="man/figures/README-grid-1.png" width="100%" />
+<img src="man/figures/README-unnamed-chunk-8-1.png" width="100%" />
 
-The IBGE statistical grid was made available in the following sizes:
-500KM, 100KM, 50KM, 10KM, 5KM, 1KM and 200M. Using a different value
-will result in an error.
+The original Brazilian statistical grid was made available at the
+following cell sizes: ‘500KM’, ‘100KM’, ‘50KM’, ‘10KM’, ‘5KM’, ‘1KM’ and
+‘200M’. Using a different cell size value will result in an error. The
+‘200M’ cell size grid covers only urban areas and is complemented by
+cells with ‘1KM’ cell size. If you want to build a grid with ‘200M’ cell
+size covering the entire area of interest (and without population census
+data), you can use the function `gridbr_make()`.
 
 Retrieving population census data requires either an internet connection
 or the support package
 [gridbr.data](https://github.com/luisfelipebr/gridbr.data). If the user
 does not meet these requirements, the output will include only the
-cell’s id and geometry, but not population census data. If the user meet
-the requirements and still don’t want to download the data, they can
-specify it by setting the `census_data` parameter to FALSE.
+cell’s id and geometry, but not population census data.
+
+If the user meet the requirements to retrieve population census data but
+don’t want to include it, they can specify it by setting the optional
+`census_data` parameter to FALSE.
 
 ``` r
-aoi_grid <- gridbr_download(aoi,
+aoi_grid <- gridbr_download(input = aoi,
                             cellsize = "1KM",
                             census_data = FALSE)
 ```
@@ -123,13 +132,13 @@ head(aoi_grid)
 #> 6 1KME7381N10816 POLYGON ((-32.43194 -3.8873...
 ```
 
-The other optional parameter is related to the projection: by default,
-the output will have the same CRS as the input. If you want to keep the
-original grid CRS, with an equal area projection, you must set the
-`equal_area` parameter to TRUE.
+There is another optional parameter related to the projection: by
+default, the output will use the same CRS as the input. If you want to
+keep the original grid CRS, with an equal area projection, you must set
+the `equal_area` parameter to TRUE.
 
 ``` r
-aoi_grid <- gridbr_download(aoi,
+aoi_grid <- gridbr_download(input = aoi,
                             cellsize = "1KM",
                             equal_area = TRUE)
 ```
@@ -148,4 +157,70 @@ head(aoi_grid)
 #> 4 1KME7376N10819    0   0   0       0 POLYGON ((7376000 10819000,...
 #> 5 1KME7376N10820    0   0   0       0 POLYGON ((7376000 10820000,...
 #> 6 1KME7376N10821    0   0   0       0 POLYGON ((7376000 10821000,...
+```
+
+### gridbr_make(input, cellsize)
+
+**`gridbr_make()`** allows the user to make a standardized statistical
+grid using any cell size (without population census data). An input
+geospatial sf object and the cell size (in meters) must be specified.
+
+``` r
+aoi_grid <- gridbr_make(input = aoi,
+                        cellsize = 100)
+```
+
+``` r
+head(aoi_grid)
+#> Simple feature collection with 6 features and 1 field
+#> Geometry type: POLYGON
+#> Dimension:     XY
+#> Bounding box:  xmin: -32.47588 ymin: -3.883487 xmax: -32.4704 ymax: -3.882175
+#> Geodetic CRS:  SIRGAS 2000
+#>                     gid                           geom
+#> 1 100ME7376250N10816850 POLYGON ((-32.47581 -3.8834...
+#> 2 100ME7376350N10816850 POLYGON ((-32.47491 -3.8834...
+#> 3 100ME7376450N10816850 POLYGON ((-32.47401 -3.8833...
+#> 4 100ME7376550N10816850 POLYGON ((-32.4731 -3.88328...
+#> 5 100ME7376650N10816850 POLYGON ((-32.4722 -3.88321...
+#> 6 100ME7376750N10816850 POLYGON ((-32.4713 -3.88314...
+```
+
+``` r
+plot(st_geometry(aoi))
+plot(st_geometry(aoi_grid), add = TRUE, border = "red")
+```
+
+<img src="man/figures/README-unnamed-chunk-15-1.png" width="100%" />
+
+An alternative unique identifier **gid** and the cell’s geometry are
+included in the output. If the cell size is contained in the original
+statistical grid pool (500000, 100000, 50000, 10000, 5000, 1000, 200),
+the original **id** is also included in the output.
+
+There is an optional parameter related to the projection: by default,
+the output will use the same CRS as the input. If you want to keep the
+original grid CRS, with an equal area projection, you must set the
+`equal_area` parameter to TRUE.
+
+``` r
+aoi_grid <- gridbr_make(input = aoi,
+                        cellsize = 100,
+                        equal_area = TRUE)
+```
+
+``` r
+head(aoi_grid)
+#> Simple feature collection with 6 features and 1 field
+#> Geometry type: POLYGON
+#> Dimension:     XY
+#> Bounding box:  xmin: 7376200 ymin: 10816800 xmax: 7376800 ymax: 10816900
+#> CRS:           +proj=aea +lat_0=-12 +lon_0=-54 +lat_1=-2 +lat_2=-22 +x_0=5000000 +y_0=10000000 +ellps=GRS80 +units=m +no_defs
+#>                     gid                           geom
+#> 1 100ME7376250N10816850 POLYGON ((7376200 10816800,...
+#> 2 100ME7376350N10816850 POLYGON ((7376300 10816800,...
+#> 3 100ME7376450N10816850 POLYGON ((7376400 10816800,...
+#> 4 100ME7376550N10816850 POLYGON ((7376500 10816800,...
+#> 5 100ME7376650N10816850 POLYGON ((7376600 10816800,...
+#> 6 100ME7376750N10816850 POLYGON ((7376700 10816800,...
 ```

@@ -2,22 +2,22 @@
 % Please edit documentation in R/gridbr_download.R
 \name{gridbr_download}
 \alias{gridbr_download}
-\title{Download IBGE statistical grid with population census data.}
+\title{Download Brazilian statistical grid with population census data.}
 \usage{
 gridbr_download(input, cellsize, census_data = TRUE, equal_area = FALSE)
 }
 \arguments{
 \item{input}{object of class sf, sfc or sfg.}
 
-\item{cellsize}{target cell size. Must be one of: "500KM", "100KM", "50KM", "10KM", "5KM", "1KM" and "200M".}
+\item{cellsize}{character. Target cell size. Must be one of: "500KM", "100KM", "50KM", "10KM", "5KM", "1KM" and "200M".}
 
-\item{census_data}{logical. Set to FALSE if you don't want to include population census data.}
+\item{census_data}{logical. Set to FALSE if you don't want to include 2010 population census data.}
 
 \item{equal_area}{logical. Set to TRUE if you want to use the original grid CRS, with an equal area projection.}
 }
 \value{
-IBGE statistical grid
+Brazilian statistical grid
 }
 \description{
-Make IBGE statistical grid covering (\code{input}) and merge with population census data.
+Make Brazilian statistical grid covering (\code{input}) with 2010 population census data.
 }

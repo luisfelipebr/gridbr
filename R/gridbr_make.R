@@ -1,10 +1,10 @@
-#' Make standardized square grid.
+#' Make Brazilian statistical grid.
 #'
-#' Make standardized square grid covering (\code{input}).
+#' Make Brazilian statistical grid covering (\code{input}).
 #' @param input object of class sf, sfc or sfg.
-#' @param cellsize integer, in meters. Target cell size must be greater than 1.
+#' @param cellsize integer. Target cell size (in meters). Must be greater than 1.
 #' @param equal_area logical. Set to TRUE if you want to use the original grid CRS, with an equal area projection.
-#' @return standardized square grid
+#' @return Brazilian statistical grid
 #' @export
 
 gridbr_make <- function(input, cellsize, equal_area = FALSE) {

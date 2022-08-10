@@ -3,7 +3,7 @@
 \docType{data}
 \name{gridbr_urban}
 \alias{gridbr_urban}
-\title{A character vector with the id of IBGE statistical grid urban cells ("200M" cell size).}
+\title{A character vector with the id of Brazilian statistical grid urban cells ("200M" cell size).}
 \format{
 A character vector with 4610350 elements.
 }
@@ -11,6 +11,6 @@ A character vector with 4610350 elements.
 data(gridbr_urban)
 }
 \description{
-A character vector with the id of IBGE statistical grid urban cells ("200M" cell size).
+A character vector with the id of Brazilian statistical grid urban cells ("200M" cell size).
 }
 \keyword{datasets}

@@ -3,14 +3,14 @@
 \docType{data}
 \name{gridbr_crs}
 \alias{gridbr_crs}
-\title{IBGE statistical grid CRS (with equal area projection)}
+\title{Brazilian statistical grid original CRS (with equal area projection).}
 \format{
 An object of class \code{crs} of length 2.
 }
 \usage{
-gridbr_crs
+data(gridbr_crs)
 }
 \description{
-IBGE statistical grid CRS (with equal area projection)
+Brazilian statistical grid original CRS (with equal area projection).
 }
 \keyword{datasets}

@@ -1,4 +1,4 @@
-#' A character vector with the id of IBGE statistical grid urban cells ("200M" cell size).
+#' A character vector with the id of Brazilian statistical grid urban cells ("200M" cell size).
 #'
 #' @docType data
 #' @keywords datasets

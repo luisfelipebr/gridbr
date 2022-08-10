@@ -56,7 +56,8 @@
 </nav><div class="container template-home">
 <div class="row">
   <main id="main" class="col-md-9"><div class="section level1">
-<div class="page-header"><h1 id="gridbr-easy-access-to-the-brazilian-statistical-grid-with-r">gridbr: easy access to the Brazilian statistical grid with R<a class="anchor" aria-label="anchor" href="#gridbr-easy-access-to-the-brazilian-statistical-grid-with-r"></a>
+<div class="page-header"><h1 id="gridbr-easy-access-to-the-brazilian-statistical-grid-with-r-">gridbr: easy access to the Brazilian statistical grid with R <a href="https://lucunha.com/gridbr" class="external-link"><img src="reference/figures/gridbr.png" align="right" height="138.5"></a>
+<a class="anchor" aria-label="anchor" href="#gridbr-easy-access-to-the-brazilian-statistical-grid-with-r-"></a>
 </h1></div>
 <!-- badges: start -->
 <p><strong>The goal of ‘gridbr’ is to provide easy access to the <a href="https://mapasinterativos.ibge.gov.br/grade/default.html" class="external-link">Brazilian Statistical Grid</a></strong>, published by the Brazilian Institute of Geography and Statistics (IBGE). It builds upon the development made in the project <a href="https://github.com/osm-codes/BR_IBGE" class="external-link">IBGE Statistical Grid in Compact Representation</a>.</p>
@@ -74,17 +75,16 @@
 <h3 id="setup">Setup<a class="anchor" aria-label="anchor" href="#setup"></a>
 </h3>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="http://lucunha.com/gridbr/">gridbr</a></span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="http://lucunha.com/gridbr/">gridbr</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://r-spatial.github.io/sf/" class="external-link">sf</a></span><span class="op">)</span></span></code></pre></div>
 <p>In the following examples, the Brazilian archipelago <a href="https://en.wikipedia.org/wiki/Fernando_de_Noronha" class="external-link">Fernando de Noronha</a> is used as aoi. It can be download with the package <a href="https://ipeagit.github.io/geobr/" class="external-link">geobr</a> by using its municipality code.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://r-spatial.github.io/sf/" class="external-link">sf</a></span><span class="op">)</span></span>
-<span><span class="co">#&gt; Linking to GEOS 3.9.1, GDAL 3.4.2, PROJ 8.2.1; sf_use_s2() is TRUE</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va">geobr</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va">geobr</span><span class="op">)</span></span></code></pre></div>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">aoi</span> <span class="op">&lt;-</span> <span class="fu">read_municipality</span><span class="op">(</span><span class="fl">2605459</span>, showProgress <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_geometry.html" class="external-link">st_geometry</a></span><span class="op">(</span><span class="va">aoi</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<p><img src="reference/figures/README-unnamed-chunk-5-1.png" width="100%"></p>
+<p><img src="reference/figures/README-figure1-1.png" width="100%"></p>
 </div>
 <div class="section level3">
 <h3 id="gridbr_downloadinput-cellsize">gridbr_download(input, cellsize)<a class="anchor" aria-label="anchor" href="#gridbr_downloadinput-cellsize"></a>
@@ -111,7 +111,7 @@
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_geometry.html" class="external-link">st_geometry</a></span><span class="op">(</span><span class="va">aoi</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_geometry.html" class="external-link">st_geometry</a></span><span class="op">(</span><span class="va">aoi_grid</span><span class="op">)</span>, add <span class="op">=</span> <span class="cn">TRUE</span>, border <span class="op">=</span> <span class="st">"red"</span><span class="op">)</span></span></code></pre></div>
-<p><img src="reference/figures/README-unnamed-chunk-8-1.png" width="100%"></p>
+<p><img src="reference/figures/README-figure2-1.png" width="100%"></p>
 <p>The original Brazilian statistical grid was made available at the following cell sizes: ‘500KM’, ‘100KM’, ‘50KM’, ‘10KM’, ‘5KM’, ‘1KM’ and ‘200M’. Using a different cell size value will result in an error. The ‘200M’ cell size grid covers only urban areas and is complemented by cells with ‘1KM’ cell size. If you want to build a grid with ‘200M’ cell size covering the entire area of interest (and without population census data), you can use the function <code><a href="reference/gridbr_make.html">gridbr_make()</a></code>.</p>
 <p>Retrieving population census data requires either an internet connection or the support package <a href="https://github.com/luisfelipebr/gridbr.data" class="external-link">gridbr.data</a>. If the user does not meet these requirements, the output will include only the cell’s id and geometry, but not population census data.</p>
 <p>If the user meet the requirements to retrieve population census data but don’t want to include it, they can specify it by setting the optional <code>census_data</code> parameter to FALSE.</p>
@@ -177,7 +177,7 @@
 <div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_geometry.html" class="external-link">st_geometry</a></span><span class="op">(</span><span class="va">aoi</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_geometry.html" class="external-link">st_geometry</a></span><span class="op">(</span><span class="va">aoi_grid</span><span class="op">)</span>, add <span class="op">=</span> <span class="cn">TRUE</span>, border <span class="op">=</span> <span class="st">"red"</span><span class="op">)</span></span></code></pre></div>
-<p><img src="reference/figures/README-unnamed-chunk-15-1.png" width="100%"></p>
+<p><img src="reference/figures/README-figure3-1.png" width="100%"></p>
 <p>An alternative unique identifier <strong>gid</strong> and the cell’s geometry are included in the output. If the cell size is contained in the original statistical grid pool (500000, 100000, 50000, 10000, 5000, 1000, 200), the original <strong>id</strong> is also included in the output.</p>
 <p>There is an optional parameter related to the projection: by default, the output will use the same CRS as the input. If you want to keep the original grid CRS, with an equal area projection, you must set the <code>equal_area</code> parameter to TRUE.</p>
 <div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">

@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# gridbr: easy access to the Brazilian statistical grid with R
+# gridbr: easy access to the Brazilian statistical grid with R <a href='https://lucunha.com/gridbr'><img src='man/figures/gridbr.png' align="right" height="138.5" /></a>
 
 <!-- badges: start -->
 
@@ -30,6 +30,7 @@ devtools::install_github("luisfelipebr/gridbr")
 
 ``` r
 library(gridbr)
+library(sf)
 ```
 
 In the following examples, the Brazilian archipelago [Fernando de
@@ -39,8 +40,6 @@ aoi. It can be download with the package
 code.
 
 ``` r
-library(sf)
-#> Linking to GEOS 3.9.1, GDAL 3.4.2, PROJ 8.2.1; sf_use_s2() is TRUE
 library(geobr)
 ```
 
@@ -52,7 +51,7 @@ aoi <- read_municipality(2605459, showProgress = FALSE)
 plot(st_geometry(aoi))
 ```
 
-<img src="man/figures/README-unnamed-chunk-5-1.png" width="100%" />
+<img src="man/figures/README-figure1-1.png" width="100%" />
 
 ### gridbr_download(input, cellsize)
 
@@ -90,7 +89,7 @@ plot(st_geometry(aoi))
 plot(st_geometry(aoi_grid), add = TRUE, border = "red")
 ```
 
-<img src="man/figures/README-unnamed-chunk-8-1.png" width="100%" />
+<img src="man/figures/README-figure2-1.png" width="100%" />
 
 The original Brazilian statistical grid was made available at the
 following cell sizes: ‘500KM’, ‘100KM’, ‘50KM’, ‘10KM’, ‘5KM’, ‘1KM’ and
@@ -191,7 +190,7 @@ plot(st_geometry(aoi))
 plot(st_geometry(aoi_grid), add = TRUE, border = "red")
 ```
 
-<img src="man/figures/README-unnamed-chunk-15-1.png" width="100%" />
+<img src="man/figures/README-figure3-1.png" width="100%" />
 
 An alternative unique identifier **gid** and the cell’s geometry are
 included in the output. If the cell size is contained in the original

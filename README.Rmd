@@ -13,7 +13,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-# gridbr: easy access to the Brazilian statistical grid with R
+# gridbr: easy access to the Brazilian statistical grid with R <a href='https://lucunha.com/gridbr'><img src='man/figures/gridbr.png' align="right" height="138.5" /></a>
 
 <!-- badges: start -->
 [![R-CMD-check](https://github.com/luisfelipebr/gridbr/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/luisfelipebr/gridbr/actions/workflows/R-CMD-check.yaml)
@@ -33,14 +33,14 @@ devtools::install_github("luisfelipebr/gridbr")
 
 ### Setup
 
-```{r}
+```{r message=FALSE}
 library(gridbr)
+library(sf)
 ```
 
 In the following examples, the Brazilian archipelago [Fernando de Noronha](https://en.wikipedia.org/wiki/Fernando_de_Noronha) is used as aoi. It can be download with the package [geobr](https://ipeagit.github.io/geobr/) by using its municipality code.
 
-```{r}
-library(sf)
+```{r message=FALSE}
 library(geobr)
 ```
 
@@ -48,7 +48,7 @@ library(geobr)
 aoi <- read_municipality(2605459, showProgress = FALSE)
 ```
 
-```{r}
+```{r figure1}
 plot(st_geometry(aoi))
 ```
 
@@ -67,7 +67,7 @@ aoi_grid <- gridbr_download(input = aoi,
 head(aoi_grid)
 ```
 
-```{r}
+```{r figure2}
 plot(st_geometry(aoi))
 plot(st_geometry(aoi_grid), add = TRUE, border = "red")
 ```
@@ -113,7 +113,7 @@ aoi_grid <- gridbr_make(input = aoi,
 head(aoi_grid)
 ```
 
-```{r}
+```{r figure3}
 plot(st_geometry(aoi))
 plot(st_geometry(aoi_grid), add = TRUE, border = "red")
 ```

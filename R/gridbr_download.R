@@ -131,12 +131,17 @@ gridbr_download <- function(input, cellsize, census_data = TRUE, equal_area = FA
 
     # get only outside intersection
     inters <- lengths(sf::st_intersects(suppressWarnings(sf::st_centroid(grid2)), suppressWarnings(sf::st_centroid(grid1)))) > 0
-    grid2 <- grid2[!inters, ]
+    if (all(!inters)) {
+      grid2 <- grid2[!inters, ]
+    }
+
 
     # create a support dataset, to create id
+    if (all(!inters)) {
     grid2c <- sf::st_coordinates(suppressWarnings(sf::st_centroid(grid2)))
-
+    }
     # recreate the IBGE id
+    if (all(!inters)) {
     grid2$id <- paste0(
       "1KM",
       "E",
@@ -144,8 +149,13 @@ gridbr_download <- function(input, cellsize, census_data = TRUE, equal_area = FA
       "N",
       as.numeric(substr(formatC((7350000 + (floor((grid2c[, 2] - 7350000) / 1000) * 1000)), width = 8, format = "d", flag = "0"), start = 1, stop = 5))
     )
+    }
 
+    if (all(!inters)) {
     grid <- rbind(grid1, grid2)
+    } else {
+      grid <- grid1
+    }
   } else {
 
     #### KM cellsize rule ----
